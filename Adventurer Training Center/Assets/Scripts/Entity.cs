@@ -9,20 +9,23 @@ public class Entity : MonoBehaviour
     public string entityName;
     public string description;
 
+    [SerializeField] protected int strength;
+    [SerializeField] protected int dexterity;
+    [SerializeField] protected int intelligence;
+
     [SerializeField] protected int maxHealth;
     [SerializeField] public int currentHealth;
     [SerializeField] protected int maxMana;
     [SerializeField] public int currentMana;
     [SerializeField] protected int armor;
 
-    [SerializeField] protected int strength;
-    [SerializeField] protected int dexterity;
-    [SerializeField] protected int intelligence;
-
     [SerializeField] protected int baseMovemenSpeed;
     [SerializeField] public int currentMovementSpeed;
 
-    public void TakeDamage(int damage)
+    [SerializeField] protected float attackSpeed;
+    [SerializeField] protected float dodgeChance;
+
+    public void DealDamageToTarget(int damage)
     {
         currentHealth -= damage;
     }
