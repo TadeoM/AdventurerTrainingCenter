@@ -16,6 +16,7 @@ public class FacilityUpgrade : ScriptableObject
     [SerializeField]
     private GameObject RoomPrefab;
 
+    
     public FacilityUpgrade(string upgradeName, string upgradeDescription, Sprite upgradeThumbnail, bool spawnRoom, Transform spawnLocation)
     {
         UpgradeName = upgradeName;

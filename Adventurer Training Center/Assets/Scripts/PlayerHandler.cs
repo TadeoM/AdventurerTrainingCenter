@@ -21,6 +21,7 @@ public class PlayerHandler : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        currentUpgrades = new List<FacilityUpgrade>();
         playerGold = StartingGold;
         playerPopulation = 0;
     }
@@ -40,7 +41,7 @@ public class PlayerHandler : MonoBehaviour
 
         if(!currentUpgrades.Contains(upgrade)&&CheckGoldForSpend(upgrade.UpgradeCost))
         {
-
+            currentUpgrades.Add(upgrade);
         }
     }
    public bool CheckGoldForSpend(int goldAmount)
