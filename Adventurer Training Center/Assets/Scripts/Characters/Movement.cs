@@ -15,12 +15,6 @@ public class Movement : MonoBehaviour
     public List<WorldTile> path;
     [SerializeField] List<WorldTile> reachedPathTiles = new List<WorldTile>(); // TODO: Change this to Vector3, entity just needs a location to go to, this way, we can fuck with the location they'll go
 
-
-    void Start()
-    {
-        
-    }
-
     void Update()
     {
         GetClosestPlayer();
