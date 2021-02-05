@@ -12,6 +12,9 @@ public class Room : MonoBehaviour
     public List<string> unlockedArmors;
     public List<string> unlockedPassiveBonuses; // str+ , int+ , dex+ , damage+
 
+    public List<string> unlockedRooms;
+    public List<string> unlockedTrainers;
+
     public List<ScriptableObject> availableUpgrades;
     public List<ScriptableObject> unlockedUpgrades;
     // bonuses/armor/weapons have all the necessary stats, you add to all the entity's stats at the beginning of the dungeon.
