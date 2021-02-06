@@ -15,11 +15,15 @@ public class ShopUI : MonoBehaviour
 
     [SerializeField]
     private GameObject playerHandler;
+
+    private bool centerUpgradesPanelActive;
     private void Awake()
     {
+        centerUpgradesPanelActive = false;
         upgradeContainer = transform.Find("Container");
         upgradeTemplate = upgradeContainer.Find("UpgradeTemplate");
         upgradeTemplate.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
 
     private void Start()
@@ -29,7 +33,7 @@ public class ShopUI : MonoBehaviour
             CreateUpgradeButtons(UpgradesAvailable[i],UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
             Debug.Log("What");
         }
-        ClosePanel();
+        
     }
     
     private void CreateUpgradeButtons(FacilityUpgrade upgrade, Sprite upgradeSprite, string upgradeDescription, int upgradeCost, string upgradeName, int posIndex)
@@ -50,14 +54,10 @@ public class ShopUI : MonoBehaviour
     }
     public void OpenPanel()
     {
-
-        gameObject.SetActive(true);
+        centerUpgradesPanelActive = !centerUpgradesPanelActive;
+        gameObject.SetActive(centerUpgradesPanelActive);
     }
 
-   public void ClosePanel()
-    {
-        gameObject.SetActive(false);
-    }
     public void TryBuyUpgrade(FacilityUpgrade upgradeToBuy)
     {
         playerHandler.GetComponent<PlayerHandler>().BuyUpgrade(upgradeToBuy);

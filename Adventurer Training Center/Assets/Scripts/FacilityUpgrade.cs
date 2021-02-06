@@ -16,6 +16,17 @@ public class FacilityUpgrade : ScriptableObject
     [SerializeField]
     private GameObject RoomPrefab;
 
+    public enum RoomType
+    {
+        Infirmary,
+        Dormitory,
+        Armory,
+        Blacksmith,
+        TrainingField,
+        Office,
+        ResearchLaboratory,
+
+    }
     
     public FacilityUpgrade(string upgradeName, string upgradeDescription, Sprite upgradeThumbnail, bool spawnRoom, Transform spawnLocation)
     {
