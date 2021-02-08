@@ -13,11 +13,12 @@ public class DungeonPrepMenu : MonoBehaviour
                     // Gameobject to spawn
                     // number of gameobject to spawn
 
+    public string mapName = "Dungeon";
     public GameObject mapToLoad;
 
     public void ChooseRegularMap()
     {
-        mapToLoad = Resources.Load<GameObject>("Maps/Dungeon");
+        mapToLoad = Resources.Load<GameObject>($"Maps/{mapName}");
         Instantiate(mapToLoad);
         Destroy(gameObject);
     }

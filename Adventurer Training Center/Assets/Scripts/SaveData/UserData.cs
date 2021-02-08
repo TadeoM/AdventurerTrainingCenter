@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserData : MonoBehaviour
+public class UserData : Singleton<UserData>
 {
     public Room trainingCenter;
+    public int gold;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        //TODO: SaveManager.Instance.LoadData()
     }
 
-    // Update is called once per frame
-    void Update()
+    public void InitializeTrainingCenter()
     {
         
     }
