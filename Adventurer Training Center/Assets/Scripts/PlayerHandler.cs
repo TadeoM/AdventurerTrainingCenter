@@ -35,13 +35,15 @@ public class PlayerHandler : MonoBehaviour
     {
         return playerGold;
     }
-    public void BuyUpgrade(FacilityUpgrade upgrade)
+    public void BuyFacilityUpgrade(FacilityUpgrade upgrade)
     {
         Debug.Log("Bought Upgrade: " + upgrade.UpgradeName);
 
         if(!currentUpgrades.Contains(upgrade)&&CheckGoldForSpend(upgrade.UpgradeCost))
         {
             currentUpgrades.Add(upgrade);
+            //Instantiate Room
+            upgrade.FacilityUpgradeEffect();
         }
     }
    public bool CheckGoldForSpend(int goldAmount)

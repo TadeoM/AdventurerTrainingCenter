@@ -12,10 +12,11 @@ public class FacilityUpgrade : ScriptableObject
     public int UpgradeCost;
     public Sprite UpgradeThumbnail;
     public bool SpawnRoom;
-    public Transform SpawnLocation;
+    public Vector3 SpawnLocation;
     [SerializeField]
     private GameObject RoomPrefab;
 
+    public RoomType roomType;
     public enum RoomType
     {
         Infirmary,
@@ -28,21 +29,18 @@ public class FacilityUpgrade : ScriptableObject
 
     }
     
-    public FacilityUpgrade(string upgradeName, string upgradeDescription, Sprite upgradeThumbnail, bool spawnRoom, Transform spawnLocation)
+    public FacilityUpgrade(string upgradeName, string upgradeDescription, Sprite upgradeThumbnail, bool spawnRoom, Vector3 spawnLocation, RoomType room)
     {
+        roomType = room;
         UpgradeName = upgradeName;
         UpgradeDescription = upgradeDescription;
         UpgradeThumbnail = upgradeThumbnail;
         SpawnRoom = spawnRoom;
         SpawnLocation = spawnLocation;
     }
-    public void UpgradeEffect()
+    public void FacilityUpgradeEffect()
     {
-        if(SpawnRoom)
-        {
-
-        }
-        
+        Instantiate(RoomPrefab, SpawnLocation, Quaternion.identity);
     }
     public bool CheckUpgrade()
     {

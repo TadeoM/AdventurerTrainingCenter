@@ -60,7 +60,7 @@ public class ShopUI : MonoBehaviour
 
     public void TryBuyUpgrade(FacilityUpgrade upgradeToBuy)
     {
-        playerHandler.GetComponent<PlayerHandler>().BuyUpgrade(upgradeToBuy);
+        playerHandler.GetComponent<PlayerHandler>().BuyFacilityUpgrade(upgradeToBuy);
     }
   
 }
