@@ -5,20 +5,15 @@ using UnityEngine;
 
 public class SaveManager : Singleton<SaveManager>
 {
-    /* populating map
-     * size
-     * array of rooms
-     */
     public RoomSaveData trainingCenter;
     public Room roomToSave;
 
     private void Start()
     {
-        //SaveData(roomToSave);
-        StartLoadRoom("TrainingCenter");
+        LoadRoomSaveData("TrainingCenter");
     }
 
-    public void SaveData(Room room)
+    public void SaveRoomData(Room room)
     {
         if(trainingCenter == null)
         {
@@ -43,32 +38,24 @@ public class SaveManager : Singleton<SaveManager>
         File.WriteAllText(GetPath(trainingCenter.fileName), json);
     }
 
-    public RoomSaveData StartLoadRoom(string roomName)
+    public RoomSaveData LoadRoomSaveData(string roomName)
     {
-        /*if (!HasFileOnDisk(roomName))
+        trainingCenter = new RoomSaveData();
+        if (!HasFileOnDisk(roomName))
         {
             return null;
-        }*/
-        trainingCenter = new RoomSaveData();
-        string json = File.ReadAllText(GetPath(roomName));
-        JsonUtility.FromJsonOverwrite(json, trainingCenter);
-
-        Debug.Log(trainingCenter.additionalRooms);
+        }
+        
         try
-        {
-            /*string json = File.ReadAllText(GetPath("TrainingCenter"));
-            JsonUtility.FromJsonOverwrite(json, trainingCenter);*/
+        {   
+            string json = File.ReadAllText(GetPath(roomName));
+            JsonUtility.FromJsonOverwrite(json, trainingCenter);
             return trainingCenter;
         }
         catch
         {
             return null;
         }
-    }
-
-    public Room IteratedLoadRoom(string roomName)
-    {
-        return null;
     }
 
     private bool HasFileOnDisk(string fileName)
