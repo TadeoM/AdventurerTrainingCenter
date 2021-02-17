@@ -18,5 +18,8 @@ MonoBehaviour:
   UpgradeThumbnail: {fileID: 3635172763415623228, guid: 0f53401573ff6c64693ee07ae62f78d9,
     type: 3}
   SpawnRoom: 1
-  SpawnLocation: {fileID: 0}
-  RoomPrefab: {fileID: 0}
+  SpawnLocation: {x: -30, y: 0, z: 0}
+  RoomPrefab: {fileID: 1277032379698194928, guid: 5e83a362d9bd16f4fa92a61679ef3b96,
+    type: 3}
+  parentGrid: {fileID: 0}
+  roomType: 0

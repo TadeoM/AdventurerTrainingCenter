@@ -7,7 +7,9 @@ public class ShopUI : MonoBehaviour
 {
     public GameObject upgradePanel;
     public List<FacilityUpgrade> UpgradesAvailable;
+    public List<FacilityUpgrade> currentUpgrades;
 
+    public List<GameObject> UpgradeButtons;
    
     [SerializeField]
     private Transform upgradeContainer;
@@ -26,19 +28,25 @@ public class ShopUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    //When Instantiating the Shop switch out the UpgradesAvailble depending on the upgrade shop to open
     private void Start()
     {
+        /*
+        
         for (int i = 0; i < UpgradesAvailable.Count; i++)
         {
             CreateUpgradeButtons(UpgradesAvailable[i],UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
-            Debug.Log("What");
+
         }
-        
+        */
+       
+
     }
     
     private void CreateUpgradeButtons(FacilityUpgrade upgrade, Sprite upgradeSprite, string upgradeDescription, int upgradeCost, string upgradeName, int posIndex)
     {
         Transform upgradeTransform = Instantiate(upgradeTemplate, upgradeContainer);
+        UpgradeButtons.Add(upgradeTransform.gameObject);
         RectTransform upgradeRectTransform = upgradeTransform.GetComponent<RectTransform>();
 
         float upgradeItemHeight = 120f;
@@ -54,13 +62,32 @@ public class ShopUI : MonoBehaviour
     }
     public void OpenPanel()
     {
+     
         centerUpgradesPanelActive = !centerUpgradesPanelActive;
         gameObject.SetActive(centerUpgradesPanelActive);
+        UpdateShop();
     }
 
     public void TryBuyUpgrade(FacilityUpgrade upgradeToBuy)
     {
-        playerHandler.GetComponent<PlayerHandler>().BuyFacilityUpgrade(upgradeToBuy);
+
+        if(playerHandler.GetComponent<PlayerHandler>().BuyFacilityRoomCreation(upgradeToBuy))
+        {
+            UpgradesAvailable.Remove(upgradeToBuy);
+            currentUpgrades.Add(upgradeToBuy);
+        }
     }
   
+    public void UpdateShop()
+    {
+        for (int i = 0; i < UpgradeButtons.Count; i++)
+        {
+            Destroy(UpgradeButtons[i].gameObject);
+        }
+        for (int i = 0; i < UpgradesAvailable.Count; i++)
+        {
+            CreateUpgradeButtons(UpgradesAvailable[i], UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
+
+        }
+    }
 }

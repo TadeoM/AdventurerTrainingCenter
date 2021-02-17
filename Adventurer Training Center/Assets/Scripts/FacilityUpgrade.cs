@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 [CreateAssetMenu(fileName = "FacilityUpgrades", menuName = "ScriptableObjects/Create Facility Upgrade", order = 1)]
 public class FacilityUpgrade : ScriptableObject
 {
@@ -15,6 +15,9 @@ public class FacilityUpgrade : ScriptableObject
     public Vector3 SpawnLocation;
     [SerializeField]
     private GameObject RoomPrefab;
+
+
+
 
     public RoomType roomType;
     public enum RoomType
@@ -38,10 +41,13 @@ public class FacilityUpgrade : ScriptableObject
         SpawnRoom = spawnRoom;
         SpawnLocation = spawnLocation;
     }
-    public void FacilityUpgradeEffect()
+    public void FacilityRoomCreation()
     {
-        Instantiate(RoomPrefab, SpawnLocation, Quaternion.identity);
+        Debug.Log("Got to create method");
+        Instantiate(RoomPrefab, SpawnLocation,Quaternion.identity);
+
     }
+
     public bool CheckUpgrade()
     {
         return true;
