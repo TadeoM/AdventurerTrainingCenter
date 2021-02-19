@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45c6e4aeec0cb4c46a72dcf4d495039e, type: 3}
-  m_Name: TrainingFieldUpgrade
+  m_Script: {fileID: 11500000, guid: fb076b1767763ea4d9db1aae695cce1e, type: 3}
+  m_Name: BlacksmithWeapons1
   m_EditorClassIdentifier: 
   UpgradeName: 
   UpgradeDescription: 
@@ -18,6 +18,5 @@ MonoBehaviour:
   UpgradeThumbnail: {fileID: 0}
   SpawnRoom: 0
   SpawnLocation: {x: 0, y: 0, z: 0}
-  RoomPrefab: {fileID: 381760768653658852, guid: fd935d6bbfb36904c904b5470901666e,
-    type: 3}
-  roomType: 4
+  RoomPrefab: {fileID: 0}
+  roomType: 3

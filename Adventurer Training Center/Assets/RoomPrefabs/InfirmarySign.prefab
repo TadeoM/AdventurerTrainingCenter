@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1277032379698194934}
   - component: {fileID: 1277032379698194929}
   - component: {fileID: 2856886901550328672}
-  - component: {fileID: 8973378441766490726}
+  - component: {fileID: 3331847742574526810}
   m_Layer: 0
   m_Name: InfirmarySign
   m_TagString: Infirmary
@@ -80,7 +80,7 @@ SpriteRenderer:
   m_Size: {x: 0.1, y: 0.1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &2856886901550328672
@@ -137,7 +137,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &8973378441766490726
+--- !u!114 &3331847742574526810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -146,12 +146,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1277032379698194928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 995c03f67e6f10444b1092d7f6dc9c47, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b9c0f1d8ff8829439fc9308de63dadf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  upgradePanel: {fileID: 0}
-  UpgradesAvailable: []
-  currentUpgrades: []
-  UpgradeButtons: []
-  upgradeContainer: {fileID: 0}
-  playerHandler: {fileID: 0}
+  openUI: 0
+  RoomUpgrades: []
+  currRoomUpgrades: []

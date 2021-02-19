@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 354463307799559720}
   - component: {fileID: 584942265032956435}
   - component: {fileID: 5703538386999677443}
+  - component: {fileID: 7220129009062723614}
   m_Layer: 0
   m_Name: blacksmithpixel
   m_TagString: Untagged
@@ -136,3 +137,15 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &7220129009062723614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4460204900478542703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9c0f1d8ff8829439fc9308de63dadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

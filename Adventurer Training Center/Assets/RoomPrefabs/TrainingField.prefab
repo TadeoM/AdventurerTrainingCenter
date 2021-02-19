@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 3838113813399334037}
   - component: {fileID: 8092854682829730739}
   - component: {fileID: 7225595500012333962}
+  - component: {fileID: 741343588236403263}
   m_Layer: 0
   m_Name: TrainingField
   m_TagString: Untagged
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_Size: {x: 0.1, y: 0.3}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &7225595500012333962
@@ -125,3 +126,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &741343588236403263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 381760768653658852}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b9c0f1d8ff8829439fc9308de63dadf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  openUI: 0
+  RoomUpgrades: []
+  currRoomUpgrades: []

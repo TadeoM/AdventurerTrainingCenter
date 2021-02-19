@@ -49,6 +49,17 @@ public class PlayerHandler : MonoBehaviour
         else
             return false;
     }
+    public bool BuyFacilityUpgrade(FacilityUpgrade upgrade)
+    {
+        if (!currentUpgrades.Contains(upgrade) && CheckGoldForSpend(upgrade.UpgradeCost))
+        {
+            currentUpgrades.Add(upgrade);
+            upgrade.SetUpgradeEffect();
+            return true;
+        }
+        else
+            return false;
+    }   
    public bool CheckGoldForSpend(int goldAmount)
     {
         if (GetGold() >= goldAmount)

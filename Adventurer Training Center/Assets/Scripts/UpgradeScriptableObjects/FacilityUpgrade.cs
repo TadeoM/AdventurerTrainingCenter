@@ -47,7 +47,10 @@ public class FacilityUpgrade : ScriptableObject
         Instantiate(RoomPrefab, SpawnLocation,Quaternion.identity);
 
     }
+    public void SetUpgradeEffect()
+    {
 
+    }
     public bool CheckUpgrade()
     {
         return true;
