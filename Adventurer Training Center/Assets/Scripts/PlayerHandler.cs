@@ -10,6 +10,14 @@ public class PlayerHandler : MonoBehaviour
     public int StartingGold;
     public int playerGold;
     public int playerPopulation;
+    [SerializeField]
+    private List<Entity> currAmountOfTrainees;
+
+    [SerializeField]
+    private int playerIncome;
+    public int playerExpenses;
+
+    public float recruitmentChance;
     public enum PlayerReputation
     {
         Legendary,
@@ -35,9 +43,13 @@ public class PlayerHandler : MonoBehaviour
     {
         return playerGold;
     }
+    public int CalculateGoldIncome()
+    {
+
+        return playerGold += playerIncome;
+    }
     public bool BuyFacilityRoomCreation(FacilityUpgrade upgrade)
     {
-        Debug.Log("Bought Upgrade: " + upgrade.UpgradeName);
 
         if (!currentUpgrades.Contains(upgrade) && CheckGoldForSpend(upgrade.UpgradeCost))
         {

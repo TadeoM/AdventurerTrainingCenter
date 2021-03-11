@@ -2,24 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RoomUpgrade : MonoBehaviour
+public class Armory : MonoBehaviour
 {
-
     public int cost;
     public int level;
-
-    
-  
-    private void Awake()
-    {
-        
-    }
-    
+    public List<Weapon> playerCurrWeapons;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-   
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
 }

@@ -63,4 +63,19 @@ public class Entity : MonoBehaviour
     {
         return intelligence;
     }
+
+    public void SetStrength(int val)
+    {
+        strength += val;
+    }
+    public void SetDexterity(int val)
+    {
+        dexterity += val;
+    }
+    public void SetIntelligence(int val)
+    {
+        intelligence += val;
+    }
+
+
 }

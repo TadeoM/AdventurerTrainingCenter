@@ -19,18 +19,26 @@ public class ShopUI : MonoBehaviour
     private GameObject playerHandler;
 
     private bool centerUpgradesPanelActive;
+    [SerializeField]
+    private bool dynamicButton;
     private void Awake()
     {
         centerUpgradesPanelActive = false;
         upgradeContainer = transform.Find("Container");
         upgradeTemplate = upgradeContainer.Find("UpgradeTemplate");
-        upgradeTemplate.gameObject.SetActive(true);
-        gameObject.SetActive(false);
+        upgradeTemplate.gameObject.SetActive(false);
+        upgradePanel.SetActive(false);
     }
 
     //When Instantiating the Shop switch out the UpgradesAvailble depending on the upgrade shop to open
     private void Start()
     {
+        if(dynamicButton)
+        {
+         
+            playerHandler=GameObject.FindGameObjectWithTag("PlayerHandler");
+        }
+            
         /*
         
         for (int i = 0; i < UpgradesAvailable.Count; i++)
@@ -39,7 +47,7 @@ public class ShopUI : MonoBehaviour
 
         }
         */
-       
+
 
     }
     
@@ -59,6 +67,7 @@ public class ShopUI : MonoBehaviour
         upgradeTransform.Find("UpgradeImage").GetComponent<Image>().sprite = upgradeSprite;
 
         upgradeTransform.GetComponent<Button>().onClick.AddListener(() => { TryBuyUpgrade(upgrade); });
+        upgradeTransform.gameObject.SetActive(true);
     }
     public void OpenPanel()
     {
@@ -66,6 +75,7 @@ public class ShopUI : MonoBehaviour
         centerUpgradesPanelActive = !centerUpgradesPanelActive;
         gameObject.SetActive(centerUpgradesPanelActive);
         UpdateShop();
+        
     }
 
     public void TryBuyUpgrade(FacilityUpgrade upgradeToBuy)
@@ -80,6 +90,7 @@ public class ShopUI : MonoBehaviour
   
     public void UpdateShop()
     {
+        
         for (int i = 0; i < UpgradeButtons.Count; i++)
         {
             Destroy(UpgradeButtons[i].gameObject);
@@ -89,5 +100,6 @@ public class ShopUI : MonoBehaviour
             CreateUpgradeButtons(UpgradesAvailable[i], UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
 
         }
+
     }
 }

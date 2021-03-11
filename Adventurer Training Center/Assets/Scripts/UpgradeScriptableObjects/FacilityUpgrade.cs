@@ -6,35 +6,28 @@ using UnityEngine.UI;
 public class FacilityUpgrade : ScriptableObject
 {
 
-    public string UpgradeName;
-    [TextArea(3,10)]
-    public string UpgradeDescription;
-    public int UpgradeCost;
-    public Sprite UpgradeThumbnail;
-    public bool SpawnRoom;
-    public Vector3 SpawnLocation;
     [SerializeField]
-    private GameObject RoomPrefab;
+    private string UpgradeName;
+    [SerializeField]
+    [TextArea(3,10)]
+    private string UpgradeDescription;
+    [SerializeField]
+    public int UpgradeCost;
+    [SerializeField]
+    private Sprite UpgradeThumbnail;
+    [SerializeField]
+    private bool SpawnRoom;
+    [SerializeField]
+    private Vector3 SpawnLocation;
+    [SerializeField]
+    protected GameObject RoomPrefab;
 
 
 
-
-    public RoomType roomType;
-    public enum RoomType
-    {
-        Infirmary,
-        Dormitory,
-        Armory,
-        Blacksmith,
-        TrainingField,
-        Office,
-        ResearchLaboratory,
-
-    }
     
-    public FacilityUpgrade(string upgradeName, string upgradeDescription, Sprite upgradeThumbnail, bool spawnRoom, Vector3 spawnLocation, RoomType room)
+    public FacilityUpgrade(string upgradeName, string upgradeDescription, Sprite upgradeThumbnail, bool spawnRoom, Vector3 spawnLocation)
     {
-        roomType = room;
+        
         UpgradeName = upgradeName;
         UpgradeDescription = upgradeDescription;
         UpgradeThumbnail = upgradeThumbnail;
