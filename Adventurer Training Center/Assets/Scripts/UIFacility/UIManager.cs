@@ -28,8 +28,16 @@ public class UIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        currTime.text ="Day "+ gameController.day;
+        playerPopulation.text = "Population: " + PlayerHandler.Instance.heroPopulation.Count;
+        playerGold.text = "Gold: " + PlayerHandler.Instance.playerGold + "/ + " + PlayerHandler.Instance.playerIncome;
+        playerReputation.text = "Reputation: " + PlayerHandler.Instance.playerReputation.ToString();
     }
 
+
+    public void SpawnRecruit()
+    {
+        gameController.RecruitTrainees();
+    }
    
 }

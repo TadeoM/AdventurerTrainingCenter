@@ -27,6 +27,8 @@ public class PlayerHandler : Singleton<PlayerHandler>
     public List<Hero> heroPopulation;
 
     public PlayerReputation playerReputation;
+
+    public int playerIncome;
     
     // Start is called before the first frame update
     void Awake()
@@ -85,5 +87,13 @@ public class PlayerHandler : Singleton<PlayerHandler>
         {
             return false;
         }
+    }
+    public void CalculateGoldIncome(int income)
+    {
+        playerIncome += income;
+    }
+    public void TotalDayAssessment()
+    {
+        playerGold += playerIncome;
     }
 }

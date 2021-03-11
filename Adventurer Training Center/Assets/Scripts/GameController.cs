@@ -4,23 +4,24 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    private int day;
+    public int day;
     private float timePerDay;
-
-    [SerializeField]
-    private GameObject playerHandlerEntity;
-    private PlayerHandler playerHandler;
+    public Vector3 spawnPos;
+    public GameObject heroRecruit;
+    private Hero heroToAdd;
+    private Entity entityToAdd;
     [SerializeField]
     private GameObject trainingFieldEntity;
-    private TrainingField traingField;
+    private TrainingField trainingField;
     [SerializeField]
     private float timeMultiplier;
     [SerializeField]
     private float currTime;
+
     // Start is called before the first frame update
     void Start()
     {
-        playerHandler = playerHandlerEntity.GetComponent<PlayerHandler>();
+        trainingField = trainingFieldEntity.GetComponent<TrainingField>();
     }
 
     // Update is called once per frame
@@ -34,7 +35,8 @@ public class GameController : MonoBehaviour
     }
     void NextDay()
     {
-        playerHandler.CalculateGoldIncome();
+        trainingField.PerformTraining();
+        PlayerHandler.Instance.TotalDayAssessment();
         day += 1;
     }
     bool TimeTick()
@@ -49,13 +51,14 @@ public class GameController : MonoBehaviour
         else
             return false;
     }
-    public void TotalDayAssessment(int amountUpgraded)
-    {
-       
-    }
+
     public void RecruitTrainees()
     {
+        entityToAdd=Instantiate(heroRecruit,spawnPos,Quaternion.identity).GetComponent<Entity>();
+        trainingField.currTraineesInFacility.Add(entityToAdd);
+        //PlayerHandler.Instance.heroPopulation.Add(heroToAdd);
         //Spawn  entity and add to entity list to playerhandler
+        PlayerHandler.Instance.CalculateGoldIncome(50);
     }
     void WeekAssessment()
     {
