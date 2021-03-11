@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb076b1767763ea4d9db1aae695cce1e, type: 3}
-  m_Name: ArmoryUpgrade
+  m_Name: TrainingField
   m_EditorClassIdentifier: 
   UpgradeName: 
-  UpgradeDescription: 
+  UpgradeDescription: 'You expect '
   UpgradeCost: 0
-  UpgradeThumbnail: {fileID: 0}
-  SpawnRoom: 0
+  UpgradeThumbnail: {fileID: 21300000, guid: c4e2b14b33165434eaafdefc853643e4, type: 3}
+  SpawnRoom: 1
   SpawnLocation: {x: 0, y: 0, z: 0}
   RoomPrefab: {fileID: 0}
-  bonusStrength: 0
-  bonusDexterity: 0
-  bonusIntelligence: 0
-  bonusHealth: 100
-  bonusMana: 0
-  bonusArmor: 5
+  bonusStrength: 1
+  bonusDexterity: 1
+  bonusIntelligence: 1
+  bonusHealth: 25
+  bonusMana: 25
+  bonusArmor: 1
   bonusMovemenSpeed: 0
   bonusAttackSpeed: 0
   bonusDodgeChance: 0

@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum HeroClass
+{
+    Ranger,
+    Warrior,
+    Mage
+}
+
 public class Entity : MonoBehaviour
 {
     public Entity target;
 
     public string entityName;
     public string description;
+    public HeroClass heroClass;
 
     [SerializeField] protected int strength;
     [SerializeField] protected int dexterity;

@@ -10,21 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb076b1767763ea4d9db1aae695cce1e, type: 3}
-  m_Name: ArmoryUpgrade
+  m_Name: InfirmaryUpgrade
   m_EditorClassIdentifier: 
-  UpgradeName: 
-  UpgradeDescription: 
-  UpgradeCost: 0
-  UpgradeThumbnail: {fileID: 0}
-  SpawnRoom: 0
-  SpawnLocation: {x: 0, y: 0, z: 0}
-  RoomPrefab: {fileID: 0}
+  UpgradeName: Healthcare
+  UpgradeDescription: Establish an infirmary to reduce deaths!
+  UpgradeCost: 100
+  UpgradeThumbnail: {fileID: 3635172763415623228, guid: 0f53401573ff6c64693ee07ae62f78d9,
+    type: 3}
+  SpawnRoom: 1
+  SpawnLocation: {x: -30, y: 0, z: 0}
+  RoomPrefab: {fileID: 1277032379698194928, guid: 5e83a362d9bd16f4fa92a61679ef3b96,
+    type: 3}
   bonusStrength: 0
   bonusDexterity: 0
   bonusIntelligence: 0
-  bonusHealth: 100
+  bonusHealth: 200
   bonusMana: 0
-  bonusArmor: 5
+  bonusArmor: 0
   bonusMovemenSpeed: 0
   bonusAttackSpeed: 0
   bonusDodgeChance: 0

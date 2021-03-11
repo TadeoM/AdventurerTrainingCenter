@@ -1,57 +1,59 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum PlayerReputation
+{
+    Legendary,
+    Renown,
+    Respected,
+    Known,
+    Unheard,
+}
 
-public class PlayerHandler : MonoBehaviour
+public struct Hero
+{
+    public int level;
+    public string name;
+    public HeroClass heroClass;
+}
+
+public class PlayerHandler : Singleton<PlayerHandler>
 {
     public List<FacilityUpgrade> currentUpgrades;
     [SerializeField]
     private List<FacilityUpgrade> AllAvailableUpgrades;
     public int StartingGold;
     public int playerGold;
-    public int playerPopulation;
-    [SerializeField]
-    private List<Entity> currAmountOfTrainees;
+    public List<Hero> heroPopulation;
 
-    [SerializeField]
-    private int playerIncome;
-    public int playerExpenses;
-
-    public float recruitmentChance;
-    public enum PlayerReputation
-    {
-        Legendary,
-        Renown,
-        Respected,
-        Known,
-        Unheard,
-    }
+    public PlayerReputation playerReputation;
+    
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         currentUpgrades = new List<FacilityUpgrade>();
         playerGold = StartingGold;
-        playerPopulation = 0;
+        heroPopulation = new List<Hero>();
+        for (int i = 0; i < 2; i++)
+        {
+            Hero newHero = new Hero();
+            newHero.level = 1;
+            newHero.name = "Hero_" + i;
+            newHero.heroClass = HeroClass.Warrior;
+            heroPopulation.Add(newHero);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     public int GetGold()
     {
         return playerGold;
     }
-    public int CalculateGoldIncome()
-    {
-
-        return playerGold += playerIncome;
-    }
     public bool BuyFacilityRoomCreation(FacilityUpgrade upgrade)
     {
+        Debug.Log("Bought Upgrade: " + upgrade.upgradeName);
 
-        if (!currentUpgrades.Contains(upgrade) && CheckGoldForSpend(upgrade.UpgradeCost))
+        if (!currentUpgrades.Contains(upgrade) && CheckGoldForSpend(upgrade.upgradeCost))
         {
             currentUpgrades.Add(upgrade);
             //Instantiate Room
@@ -63,7 +65,7 @@ public class PlayerHandler : MonoBehaviour
     }
     public bool BuyFacilityUpgrade(FacilityUpgrade upgrade)
     {
-        if (!currentUpgrades.Contains(upgrade) && CheckGoldForSpend(upgrade.UpgradeCost))
+        if (!currentUpgrades.Contains(upgrade) && CheckGoldForSpend(upgrade.upgradeCost))
         {
             currentUpgrades.Add(upgrade);
             upgrade.SetUpgradeEffect();
@@ -83,6 +85,5 @@ public class PlayerHandler : MonoBehaviour
         {
             return false;
         }
-            
     }
 }

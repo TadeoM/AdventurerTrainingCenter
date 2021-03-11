@@ -5,39 +5,41 @@ using UnityEngine.UI;
 [CreateAssetMenu(fileName = "FacilityUpgrades", menuName = "ScriptableObjects/Create Facility Upgrade", order = 1)]
 public class FacilityUpgrade : ScriptableObject
 {
-
-    [SerializeField]
-    private string UpgradeName;
-    [SerializeField]
+    public string upgradeName;
     [TextArea(3,10)]
-    private string UpgradeDescription;
+    public string upgradeDescription;
+    public int upgradeCost;
+    public Sprite upgradeThumbnail;
+    public bool spawnRoom;
+    public Vector3 spawnLocation;
     [SerializeField]
-    public int UpgradeCost;
-    [SerializeField]
-    private Sprite UpgradeThumbnail;
-    [SerializeField]
-    private bool SpawnRoom;
-    [SerializeField]
-    private Vector3 SpawnLocation;
-    [SerializeField]
-    protected GameObject RoomPrefab;
+    protected GameObject roomPrefab;
+
+    [SerializeField] protected int bonusStrength;
+    [SerializeField] protected int bonusDexterity;
+    [SerializeField] protected int bonusIntelligence;
+
+    [SerializeField] protected int bonusHealth;
+    [SerializeField] protected int bonusMana;
+    [SerializeField] protected int bonusArmor;
+
+    [SerializeField] protected int bonusMovemenSpeed;
+    [SerializeField] protected float bonusAttackSpeed;
+    [SerializeField] protected float bonusDodgeChance;
 
 
-
-    
     public FacilityUpgrade(string upgradeName, string upgradeDescription, Sprite upgradeThumbnail, bool spawnRoom, Vector3 spawnLocation)
     {
-        
-        UpgradeName = upgradeName;
-        UpgradeDescription = upgradeDescription;
-        UpgradeThumbnail = upgradeThumbnail;
-        SpawnRoom = spawnRoom;
-        SpawnLocation = spawnLocation;
+        this.upgradeName = upgradeName;
+        this.upgradeDescription = upgradeDescription;
+        this.upgradeThumbnail = upgradeThumbnail;
+        this.spawnRoom = spawnRoom;
+        this.spawnLocation = spawnLocation;
     }
     public void FacilityRoomCreation()
     {
         Debug.Log("Got to create method");
-        Instantiate(RoomPrefab, SpawnLocation,Quaternion.identity);
+        Instantiate(roomPrefab, spawnLocation,Quaternion.identity);
 
     }
     public void SetUpgradeEffect()
@@ -50,7 +52,7 @@ public class FacilityUpgrade : ScriptableObject
     }
     public bool CheckCost(int playerGold)
     {
-        if(playerGold>UpgradeCost)
+        if(playerGold>upgradeCost)
         {
             return true;
         }
@@ -59,5 +61,4 @@ public class FacilityUpgrade : ScriptableObject
             return false;
         }
     }
-
 }

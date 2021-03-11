@@ -19,36 +19,13 @@ public class ShopUI : MonoBehaviour
     private GameObject playerHandler;
 
     private bool centerUpgradesPanelActive;
-    [SerializeField]
-    private bool dynamicButton;
     private void Awake()
     {
         centerUpgradesPanelActive = false;
-        upgradeContainer = transform.Find("Container");
-        upgradeTemplate = upgradeContainer.Find("UpgradeTemplate");
-        upgradeTemplate.gameObject.SetActive(false);
-        upgradePanel.SetActive(false);
-    }
-
-    //When Instantiating the Shop switch out the UpgradesAvailble depending on the upgrade shop to open
-    private void Start()
-    {
-        if(dynamicButton)
-        {
-         
-            playerHandler=GameObject.FindGameObjectWithTag("PlayerHandler");
-        }
-            
-        /*
-        
-        for (int i = 0; i < UpgradesAvailable.Count; i++)
-        {
-            CreateUpgradeButtons(UpgradesAvailable[i],UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
-
-        }
-        */
-
-
+        //upgradeContainer = transform.Find("Container");
+        //upgradeTemplate = upgradeContainer.Find("UpgradeTemplate");
+        //upgradeTemplate.gameObject.SetActive(true);
+        gameObject.SetActive(false);
     }
     
     private void CreateUpgradeButtons(FacilityUpgrade upgrade, Sprite upgradeSprite, string upgradeDescription, int upgradeCost, string upgradeName, int posIndex)
@@ -67,7 +44,6 @@ public class ShopUI : MonoBehaviour
         upgradeTransform.Find("UpgradeImage").GetComponent<Image>().sprite = upgradeSprite;
 
         upgradeTransform.GetComponent<Button>().onClick.AddListener(() => { TryBuyUpgrade(upgrade); });
-        upgradeTransform.gameObject.SetActive(true);
     }
     public void OpenPanel()
     {
@@ -75,12 +51,10 @@ public class ShopUI : MonoBehaviour
         centerUpgradesPanelActive = !centerUpgradesPanelActive;
         gameObject.SetActive(centerUpgradesPanelActive);
         UpdateShop();
-        
     }
 
     public void TryBuyUpgrade(FacilityUpgrade upgradeToBuy)
     {
-
         if(playerHandler.GetComponent<PlayerHandler>().BuyFacilityRoomCreation(upgradeToBuy))
         {
             UpgradesAvailable.Remove(upgradeToBuy);
@@ -90,16 +64,14 @@ public class ShopUI : MonoBehaviour
   
     public void UpdateShop()
     {
-        
         for (int i = 0; i < UpgradeButtons.Count; i++)
         {
             Destroy(UpgradeButtons[i].gameObject);
         }
         for (int i = 0; i < UpgradesAvailable.Count; i++)
         {
-            CreateUpgradeButtons(UpgradesAvailable[i], UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
+            CreateUpgradeButtons(UpgradesAvailable[i], UpgradesAvailable[i].upgradeThumbnail, UpgradesAvailable[i].upgradeDescription, UpgradesAvailable[i].upgradeCost, UpgradesAvailable[i].upgradeName, i);
 
         }
-
     }
 }
