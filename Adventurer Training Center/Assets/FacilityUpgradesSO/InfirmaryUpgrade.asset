@@ -21,5 +21,12 @@ MonoBehaviour:
   SpawnLocation: {x: -30, y: 0, z: 0}
   RoomPrefab: {fileID: 1277032379698194928, guid: 5e83a362d9bd16f4fa92a61679ef3b96,
     type: 3}
-  parentGrid: {fileID: 0}
-  roomType: 0
+  bonusStrength: 0
+  bonusDexterity: 0
+  bonusIntelligence: 0
+  bonusHealth: 200
+  bonusMana: 0
+  bonusArmor: 0
+  bonusMovemenSpeed: 0
+  bonusAttackSpeed: 0
+  bonusDodgeChance: 0

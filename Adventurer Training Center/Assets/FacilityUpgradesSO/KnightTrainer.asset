@@ -17,5 +17,14 @@ MonoBehaviour:
   UpgradeCost: 0
   UpgradeThumbnail: {fileID: 0}
   SpawnRoom: 0
-  SpawnLocation: {fileID: 0}
+  SpawnLocation: {x: 0, y: 0, z: 0}
   RoomPrefab: {fileID: 0}
+  bonusStrength: 3
+  bonusDexterity: 2
+  bonusIntelligence: 0
+  bonusHealth: 100
+  bonusMana: 0
+  bonusArmor: 2
+  bonusMovemenSpeed: 0
+  bonusAttackSpeed: 0
+  bonusDodgeChance: 0

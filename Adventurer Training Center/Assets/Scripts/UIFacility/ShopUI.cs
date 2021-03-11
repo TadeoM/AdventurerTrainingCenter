@@ -22,25 +22,10 @@ public class ShopUI : MonoBehaviour
     private void Awake()
     {
         centerUpgradesPanelActive = false;
-        upgradeContainer = transform.Find("Container");
-        upgradeTemplate = upgradeContainer.Find("UpgradeTemplate");
-        upgradeTemplate.gameObject.SetActive(true);
+        //upgradeContainer = transform.Find("Container");
+        //upgradeTemplate = upgradeContainer.Find("UpgradeTemplate");
+        //upgradeTemplate.gameObject.SetActive(true);
         gameObject.SetActive(false);
-    }
-
-    //When Instantiating the Shop switch out the UpgradesAvailble depending on the upgrade shop to open
-    private void Start()
-    {
-        /*
-        
-        for (int i = 0; i < UpgradesAvailable.Count; i++)
-        {
-            CreateUpgradeButtons(UpgradesAvailable[i],UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
-
-        }
-        */
-       
-
     }
     
     private void CreateUpgradeButtons(FacilityUpgrade upgrade, Sprite upgradeSprite, string upgradeDescription, int upgradeCost, string upgradeName, int posIndex)
@@ -70,7 +55,6 @@ public class ShopUI : MonoBehaviour
 
     public void TryBuyUpgrade(FacilityUpgrade upgradeToBuy)
     {
-
         if(playerHandler.GetComponent<PlayerHandler>().BuyFacilityRoomCreation(upgradeToBuy))
         {
             UpgradesAvailable.Remove(upgradeToBuy);
@@ -86,7 +70,7 @@ public class ShopUI : MonoBehaviour
         }
         for (int i = 0; i < UpgradesAvailable.Count; i++)
         {
-            CreateUpgradeButtons(UpgradesAvailable[i], UpgradesAvailable[i].UpgradeThumbnail, UpgradesAvailable[i].UpgradeDescription, UpgradesAvailable[i].UpgradeCost, UpgradesAvailable[i].UpgradeName, i);
+            CreateUpgradeButtons(UpgradesAvailable[i], UpgradesAvailable[i].upgradeThumbnail, UpgradesAvailable[i].upgradeDescription, UpgradesAvailable[i].upgradeCost, UpgradesAvailable[i].upgradeName, i);
 
         }
     }

@@ -19,4 +19,12 @@ MonoBehaviour:
   SpawnRoom: 1
   SpawnLocation: {x: 0, y: 0, z: 0}
   RoomPrefab: {fileID: 0}
-  roomType: 0
+  bonusStrength: 1
+  bonusDexterity: 1
+  bonusIntelligence: 1
+  bonusHealth: 25
+  bonusMana: 25
+  bonusArmor: 1
+  bonusMovemenSpeed: 0
+  bonusAttackSpeed: 0
+  bonusDodgeChance: 0
