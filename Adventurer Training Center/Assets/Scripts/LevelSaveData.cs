@@ -16,7 +16,5 @@ public class LevelSaveData : MonoBehaviour
     private void Start()
     {
         gridLayout = GetComponent<GridLayout>();
-
-        Debug.Log(tilemap.size);
     }
 }

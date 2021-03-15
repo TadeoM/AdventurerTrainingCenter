@@ -16,6 +16,7 @@ public class Entity : MonoBehaviour
     public string entityName;
     public string description;
     public HeroClass heroClass;
+    public int level;
 
     [SerializeField] protected int strength;
     [SerializeField] protected int dexterity;
@@ -51,12 +52,47 @@ public class Entity : MonoBehaviour
         currentMana -= manaUsed;
     }
 
-    // Start is called before the first frame update
-    void Awake()
+    protected void Init()
     {
+        switch (heroClass)
+        {
+            case HeroClass.Ranger:
+                strength = 1;
+                dexterity = 3;
+                intelligence = 2;
+                break;
+            case HeroClass.Warrior:
+                strength = 3;
+                dexterity = 2;
+                intelligence = 1;
+                break;
+            case HeroClass.Mage:
+                strength = 1;
+                dexterity = 2;
+                intelligence = 3;
+                break;
+            default:
+                break;
+        }
+
         currentHealth = maxHealth = (strength * 4);
         currentMovementSpeed = baseMovemenSpeed = 2;
         currentMana = maxMana = intelligence;
+    }
+
+    public void Init(Hero hero)
+    {
+        level = hero.level;
+        heroClass = hero.heroClass;
+        entityName = hero.name;
+        Init();
+    }
+    public void Init(Entity entity)
+    {
+        level = entity.level;
+        heroClass = entity.heroClass;
+        entityName = entity.name;
+        Init();
     }
 
     public int Strength()
@@ -70,5 +106,20 @@ public class Entity : MonoBehaviour
     public int Intelligence()
     {
         return intelligence;
+    }
+
+    public string GetImagePath()
+    {
+        switch (heroClass)
+        {
+            case HeroClass.Ranger:
+                return "FlowerElf";
+            case HeroClass.Warrior:
+                return "OrangeKnight";
+            case HeroClass.Mage:
+                return "Wizard";
+            default:
+                return "";
+        }
     }
 }
