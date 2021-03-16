@@ -52,7 +52,7 @@ public class Entity : MonoBehaviour
         currentMana -= manaUsed;
     }
 
-    protected void Init()
+    protected Entity Init()
     {
         switch (heroClass)
         {
@@ -78,21 +78,22 @@ public class Entity : MonoBehaviour
         currentHealth = maxHealth = (strength * 4);
         currentMovementSpeed = baseMovemenSpeed = 2;
         currentMana = maxMana = intelligence;
+        return this;
     }
 
-    public void Init(Hero hero)
+    public Entity Init(Hero hero)
     {
         level = hero.level;
         heroClass = hero.heroClass;
         entityName = hero.name;
-        Init();
+        return Init();
     }
-    public void Init(Entity entity)
+    public Entity Init(Entity entity)
     {
         level = entity.level;
         heroClass = entity.heroClass;
         entityName = entity.name;
-        Init();
+        return Init();
     }
 
     public int Strength()
