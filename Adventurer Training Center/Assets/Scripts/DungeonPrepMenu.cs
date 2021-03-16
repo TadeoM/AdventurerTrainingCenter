@@ -17,28 +17,43 @@ public class DungeonPrepMenu : MonoBehaviour
 
     public string mapName = "Dungeon";
     public GameObject mapToLoad;
-    public TMP_Dropdown[] heroDropdownList;
-    public Image[] heroDropdownImages;
-    public Entity[] party;
+    public GameObject heroListContainer;
+    public GameObject listedHeroTemplate;
+    public GameObject[] party;
 
     private void Start()
     {
         List<TMP_Dropdown.OptionData> dataOptions = new List<TMP_Dropdown.OptionData>();
         for (int i = 0; i < PlayerHandler.Instance.heroPopulation.Count; i++)
         {
-            Hero currentHero = PlayerHandler.Instance.heroPopulation[i];
-            TMP_Dropdown.OptionData newData = new TMP_Dropdown.OptionData();
-            newData.text = $"{currentHero.name}: LVL{currentHero.level} {currentHero.heroClass.ToString()}";
-            dataOptions.Add(newData);
-        }
-        for (int y = 0; y < heroDropdownList.Length; y++)
-        {
-            //heroDropdownImages.sprite = newData.image;
-            //newData.image = Resources.LoadAll<Sprite>("OrangeKnight")[0];
-            heroDropdownList[y].AddOptions(dataOptions);
+            GameObject newListedHero = Instantiate(listedHeroTemplate);
+            newListedHero.transform.SetParent(heroListContainer.transform);
+            Entity currentHero = newListedHero.AddComponent<Entity>();
+            currentHero.Init(PlayerHandler.Instance.heroPopulation[i]);
+            newListedHero.GetComponent<ListedHero>().Init(currentHero);
+            newListedHero.GetComponent<Button>().onClick.AddListener(() => SelectedHero(currentHero));
         }
     }
 
+    public void SelectedHero(Entity currentHero)
+    {
+        for (int i = 0; i < party.Length; i++)
+        {
+            SelectedHero heroDisplay = party[i].GetComponent<SelectedHero>();
+            if (heroDisplay.heroImage.sprite == null)
+            {
+                heroDisplay.Init(currentHero);
+                Entity heroEntity = heroDisplay.gameObject.AddComponent<Entity>();
+                heroEntity.Init(currentHero);
+                Destroy(currentHero.gameObject);
+                break;
+            }
+            if (i == party.Length - 1)
+            {
+                Debug.Log("Party is full");
+            }
+        }
+    }
 
     public void ChooseRegularMap()
     {
