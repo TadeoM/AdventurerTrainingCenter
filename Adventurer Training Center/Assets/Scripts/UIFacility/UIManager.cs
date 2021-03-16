@@ -8,7 +8,6 @@ public class UIManager : MonoBehaviour
     public Text playerGold;
     public Text playerReputation;
     public Text currTime;
-    public PlayerHandler playerEntity;
 
     public GameObject blacksmithObject;
     public GameObject infirmaryObject;
@@ -16,13 +15,13 @@ public class UIManager : MonoBehaviour
     public GameObject armoryObject;
 
     [SerializeField]
-    private GameObject gameControllerEntity;
+
     private GameController gameController;
     
     // Start is called before the first frame update
     void Start()
     {
-        gameController = gameControllerEntity.GetComponent<GameController>();
+        gameController = gameObject.GetComponent<GameController>();
     }
 
     // Update is called once per frame

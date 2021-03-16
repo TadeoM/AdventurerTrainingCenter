@@ -45,6 +45,14 @@ public class TrainingField : MonoBehaviour
         CalculateResult(training);
 
     }
+    public void Upgrade()
+    {
+        int upgradeCost = cost * 5;
+        if(PlayerHandler.Instance.CheckGoldForSpend(upgradeCost))
+        {
+            level += 1;
+        }
+    }
     void CalculateResult(TypeOfTraining training)
     {
        
