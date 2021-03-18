@@ -15,6 +15,12 @@ public struct Hero
     public int level;
     public string name;
     public HeroClass heroClass;
+    public Hero(Entity entity)
+    {
+        level = entity.level;
+        name = entity.name;
+        heroClass = entity.heroClass;
+    }
 }
 
 public class PlayerHandler : Singleton<PlayerHandler>
@@ -39,8 +45,8 @@ public class PlayerHandler : Singleton<PlayerHandler>
         {
             Hero newHero = new Hero();
             newHero.level = 1;
-            newHero.name = "Hero_" + i;
-            newHero.heroClass = HeroClass.Warrior;
+            newHero.heroClass = (HeroClass)Random.Range(0, 3);
+            newHero.name = $"{newHero.heroClass}_{i}";
             heroPopulation.Add(newHero);
         }
     }

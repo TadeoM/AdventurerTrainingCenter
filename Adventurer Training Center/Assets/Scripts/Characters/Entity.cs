@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
         currentHealth -= (damage - armor);
         if(currentHealth <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 
@@ -52,7 +52,7 @@ public class Entity : MonoBehaviour
         currentMana -= manaUsed;
     }
 
-    protected Entity Init()
+    public Entity Init()
     {
         switch (heroClass)
         {
@@ -75,9 +75,7 @@ public class Entity : MonoBehaviour
                 break;
         }
 
-        currentHealth = maxHealth = (strength * 4);
-        currentMovementSpeed = baseMovemenSpeed = 2;
-        currentMana = maxMana = intelligence;
+        InitStats();
         return this;
     }
 
@@ -93,7 +91,18 @@ public class Entity : MonoBehaviour
         level = entity.level;
         heroClass = entity.heroClass;
         entityName = entity.name;
-        return Init();
+        strength = entity.strength;
+        dexterity = entity.dexterity;
+        intelligence = entity.intelligence;
+        InitStats();
+        return this;
+    }
+
+    public void InitStats()
+    {
+        currentHealth = maxHealth = (strength * 4);
+        currentMovementSpeed = baseMovemenSpeed = 2;
+        currentMana = maxMana = intelligence;
     }
 
     public int Strength()

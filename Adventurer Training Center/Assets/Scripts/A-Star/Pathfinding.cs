@@ -1,20 +1,46 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class Pathfinding : MonoBehaviour
 {
     public GridCreation grid;
     public GameObject enemyList;
-    public Movement[] enemies;
+    public List<Movement> enemies;
     public GameObject heroList;
-    public Movement[] heroes;
+    public List<GameObject> spawnLocations;
+    public List<Movement> heroes;
 
     private void Start()
     {
         grid = GetComponent<GridCreation>();
-        enemies = enemyList.GetComponentsInChildren<Movement>();
-        heroes = heroList.GetComponentsInChildren<Movement>();
+        enemies = new List<Movement>(enemyList.GetComponentsInChildren<Movement>());
+        heroes = new List<Movement>(heroList.GetComponentsInChildren<Movement>());
+    }
+   
+    public void SpawnMonster(Movement newEnemy)
+    {
+        enemies.Add(newEnemy);
+    }
+    public void SpawnMonsters(List<Movement> newEnemies)
+    {
+        foreach (var enemy in newEnemies)
+        {
+            enemies.Add(enemy);
+        }
+    }
+
+    public void SpawnHeroes(List<Entity> newHeroes)
+    {
+        for (int i = 0; i < newHeroes.Count; i++) 
+        {
+            Debug.Log("here");
+            string path = $"Spawnable/Heroes/{newHeroes[i].heroClass}";
+            GameObject newHero = Instantiate(Resources.Load<GameObject>(path));
+            newHero.GetComponent<Entity>().Init();
+            newHero.transform.position = spawnLocations[i].transform.position;
+        }
     }
 
     public void SetSpawnedEnemyParents()
@@ -29,6 +55,7 @@ public class Pathfinding : MonoBehaviour
         foreach (var hero in allHeroes)
         {
             hero.transform.parent = heroList.transform;
+            heroes.Add(hero.GetComponent<Movement>());
         }
     }
     private void Update()

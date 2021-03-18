@@ -14,6 +14,7 @@ public class Movement : MonoBehaviour
 
     public List<WorldTile> path;
     [SerializeField] List<WorldTile> reachedPathTiles = new List<WorldTile>(); // TODO: Change this to Vector3, entity just needs a location to go to, this way, we can fuck with the location they'll go
+    private WorldTile prevTile;
 
     void Update()
     {
@@ -48,10 +49,21 @@ public class Movement : MonoBehaviour
             {
                 for (int i = 0; i < path.Count; i++)
                 {
-                    if (reachedPathTiles.Contains(path[i])) continue;
-                    else reachedPathTiles.Add(path[i]); break;
+                    if (reachedPathTiles.Contains(path[i]))
+                    {
+                        continue;
+                    }
+                    else 
+                    {
+                        if (path[i].hasUnit == false)
+                        {
+                            reachedPathTiles.Add(path[i]);
+                            path[i].hasUnit = true;
+                            WorldTile wt = reachedPathTiles[reachedPathTiles.Count - 1];
+                        }
+                        break;
+                    }
                 }
-                WorldTile wt = reachedPathTiles[reachedPathTiles.Count - 1];
             }
             else
             {
@@ -59,11 +71,15 @@ public class Movement : MonoBehaviour
             }
         }
     }
-    void Move()
+    public void Move()
     {
         if(reachedPathTiles.Count > 0)
         {
             if (Vector3.Distance(transform.position, reachedPathTiles[reachedPathTiles.Count - 1].transform.position) <= .001f) {
+                if(path.Count > 1)
+                {
+                    reachedPathTiles[reachedPathTiles.Count - 1].hasUnit = false;
+                }
                 reachedPathTiles.RemoveAt(reachedPathTiles.Count - 1);
                 PerformMovement();
             }

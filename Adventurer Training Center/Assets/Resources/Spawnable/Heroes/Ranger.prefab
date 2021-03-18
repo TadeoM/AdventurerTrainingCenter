@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4248129299738233063}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.6, z: 0}
+  m_LocalPosition: {x: 0, y: -0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4248129300515011296}
@@ -70,7 +70,7 @@ SpriteRenderer:
   m_SortingLayerID: 1296867995
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3295757690945107014, guid: 2d5d7e50a05a72445a14ceb62fdc8cce,
+  m_Sprite: {fileID: -5677275795876511063, guid: f8577d523e9b6cd4bbc77159c888cec4,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 4248129300515011299}
   - component: {fileID: 4248129300515011298}
   m_Layer: 8
-  m_Name: Swordmaster
+  m_Name: Ranger
   m_TagString: Hero
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +109,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4248129300515011310}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.53, y: 6.684, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4248129299738233062}
@@ -132,6 +132,8 @@ MonoBehaviour:
   target: {fileID: 0}
   entityName: 
   description: 
+  heroClass: 0
+  level: 0
   strength: 4
   dexterity: 4
   intelligence: 2
@@ -188,7 +190,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.18}
+  m_Offset: {x: 0, y: 0.13}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}

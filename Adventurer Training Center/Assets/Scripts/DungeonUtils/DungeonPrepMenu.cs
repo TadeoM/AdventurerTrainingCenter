@@ -6,15 +6,6 @@ using UnityEngine.UI;
 
 public class DungeonPrepMenu : MonoBehaviour
 {
-    // need to choose map
-        // load the map chosen
-            // a map should have slots to be filled with either a trap, or an enemy/enemy cluster
-            // Create 
-                // an array of [custom class] that has the following:
-                    // Vector3 location
-                    // Gameobject to spawn
-                    // number of gameobject to spawn
-
     public string mapName = "Dungeon";
     public GameObject mapToLoad;
     public GameObject heroListContainer;
@@ -58,7 +49,17 @@ public class DungeonPrepMenu : MonoBehaviour
     public void ChooseRegularMap()
     {
         mapToLoad = Resources.Load<GameObject>($"Maps/{mapName}");
-        Instantiate(mapToLoad);
+        GameObject map = Instantiate(mapToLoad);
+        List<Entity> partyEntities = new List<Entity>();
+        foreach (var hero in party)
+        {
+            Entity heroEntity = hero.GetComponent<Entity>();
+            if (heroEntity != null)
+            {
+                partyEntities.Add(heroEntity);
+            }
+        }
+        FindObjectOfType<Pathfinding>().SpawnHeroes(partyEntities);
         Destroy(gameObject);
     }
 }

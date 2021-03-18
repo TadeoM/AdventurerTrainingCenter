@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ public class WorldTile : MonoBehaviour
     public bool isWalkable;
     public List<WorldTile> neighbors;
     public WorldTile parent;
+    public bool hasUnit;
 
     public WorldTile(bool walkable, int x, int y)
     {
@@ -22,5 +24,5 @@ public class WorldTile : MonoBehaviour
         gridY = y;
     }
 
-    public int fCost{ get { return gCost + hCost; } }
+    public int fCost{ get { return gCost + hCost + (Convert.ToInt32(hasUnit) * 50); } }
 }
