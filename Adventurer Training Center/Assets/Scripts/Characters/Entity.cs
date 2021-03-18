@@ -18,9 +18,9 @@ public class Entity : MonoBehaviour
     public HeroClass heroClass;
     public int level;
 
-    [SerializeField] protected int strength;
-    [SerializeField] protected int dexterity;
-    [SerializeField] protected int intelligence;
+    [SerializeField] protected float strength;
+    [SerializeField] protected float dexterity;
+    [SerializeField] protected float intelligence;
 
     [SerializeField] protected int maxHealth;
     [SerializeField] public int currentHealth;
@@ -34,13 +34,13 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected float dodgeChance;
 
-    public void DealDamageToTarget(int damage)
+    public void DealDamageToTarget(float damage)
     {
         target.TakeDamage(damage);
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= (damage - armor);
+        currentHealth -= (int)(damage - armor);
         if(currentHealth <= 0)
         {
             Destroy(gameObject);
@@ -52,7 +52,7 @@ public class Entity : MonoBehaviour
         currentMana -= manaUsed;
     }
 
-    protected Entity Init()
+    public Entity Init()
     {
         switch (heroClass)
         {
@@ -75,9 +75,9 @@ public class Entity : MonoBehaviour
                 break;
         }
 
-        currentHealth = maxHealth = (strength * 4);
+        currentHealth = maxHealth = (int)(strength * 4);
         currentMovementSpeed = baseMovemenSpeed = 2;
-        currentMana = maxMana = intelligence;
+        currentMana = maxMana = (int)intelligence;
         return this;
     }
 
@@ -96,15 +96,15 @@ public class Entity : MonoBehaviour
         return Init();
     }
 
-    public int Strength()
+    public float Strength()
     {
         return strength;
     }
-    public int Dexterity()
+    public float Dexterity()
     {
         return dexterity;
     }
-    public int Intelligence()
+    public float Intelligence()
     {
         return intelligence;
     }

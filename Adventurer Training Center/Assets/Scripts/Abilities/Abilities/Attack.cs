@@ -18,7 +18,7 @@ public class Attack : Ability
     {
         if (user.target != null)
         {
-            int damage = user.Strength();
+            float damage = user.Strength();
             user.DealDamageToTarget(damage);
             UpdateState(AbilityState.CooldingDown);
         }

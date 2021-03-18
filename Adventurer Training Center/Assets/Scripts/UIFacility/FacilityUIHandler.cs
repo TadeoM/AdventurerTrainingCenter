@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class UIManager : MonoBehaviour
+public class FacilityUIHandler : MonoBehaviour
 {
     public Text playerPopulation;
     public Text playerGold;
@@ -14,20 +14,18 @@ public class UIManager : MonoBehaviour
     public GameObject trainingFieldObject;
     public GameObject armoryObject;
 
-    [SerializeField]
 
-    private GameController gameController;
     
     // Start is called before the first frame update
     void Start()
     {
-        gameController = gameObject.GetComponent<GameController>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        currTime.text ="Day "+ gameController.day;
+        currTime.text =" "+ GameController.Instance.date;
         playerPopulation.text = "Population: " + PlayerHandler.Instance.heroPopulation.Count;
         playerGold.text = "Gold: " + PlayerHandler.Instance.playerGold + "/ + " + PlayerHandler.Instance.playerIncome;
         playerReputation.text = "Reputation: " + PlayerHandler.Instance.playerReputation.ToString();
@@ -36,7 +34,7 @@ public class UIManager : MonoBehaviour
 
     public void SpawnRecruit()
     {
-        gameController.RecruitTrainees();
+        GameController.Instance.RecruitTrainees();
     }
    
 }

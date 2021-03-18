@@ -8,7 +8,7 @@ public class TrainingField : MonoBehaviour
     public int cost;
     public int level;
 
-    public int upgradeModifier;
+    public int successModifier;
     public int failureModifier;
 
 
@@ -16,6 +16,7 @@ public class TrainingField : MonoBehaviour
     public List<Entity> currTraineesInFacility;
     public int amountSucceeded;
 
+    [SerializeField]
     private float chanceToSucceed;
     bool success;
     private float chanceToFail;
@@ -59,20 +60,21 @@ public class TrainingField : MonoBehaviour
         chanceToSucceed += (float)(level * 0.05);
         foreach (Entity trainee in currTraineesInFacility)
         {
-            if(Random.Range(0,100)<=chanceToSucceed)
+            if (Random.Range(0,100)<=chanceToSucceed)
             {
+                Debug.Log("Performed Training Success");
                 amountSucceeded += 1;
                 switch (training)
                 {
                     case TypeOfTraining.Dexterity:
                         //int stat = upgradeModifier+1;
-                        trainee.SetDexterity(upgradeModifier);
+                        PlayerHandler.Instance.dexterityMod += successModifier;
                         break;
                     case TypeOfTraining.Strength:
-                        trainee.SetStrength(upgradeModifier);
+                        PlayerHandler.Instance.strengthMod += successModifier;
                         break;
                     case TypeOfTraining.Intelligence:
-                        trainee.SetIntelligence(upgradeModifier);
+                        PlayerHandler.Instance.intelligenceMod += successModifier;
                         break;
                     default:
                         break;
@@ -82,16 +84,17 @@ public class TrainingField : MonoBehaviour
             {
                 if(Random.Range(0,100)>=chanceToFail)
                 {
+                    Debug.Log("Performed Training Fail");
                     switch (training)
                     {
                         case TypeOfTraining.Dexterity:
-                            trainee.SetDexterity(failureModifier);
+                            PlayerHandler.Instance.dexterityMod -= failureModifier;
                             break;
                         case TypeOfTraining.Strength:
-                            trainee.SetStrength(failureModifier);
+                            PlayerHandler.Instance.strengthMod -= failureModifier;
                             break;
                         case TypeOfTraining.Intelligence:
-                            trainee.SetIntelligence(failureModifier);
+                            PlayerHandler.Instance.intelligenceMod -= failureModifier;
                             break;
                         default:
                             break;
