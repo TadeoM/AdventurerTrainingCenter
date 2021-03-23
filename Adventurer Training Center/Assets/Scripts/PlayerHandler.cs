@@ -10,19 +10,6 @@ public enum PlayerReputation
     Unheard,
 }
 
-public struct Hero
-{
-    public int level;
-    public string name;
-    public HeroClass heroClass;
-    public Hero(Entity entity)
-    {
-        level = entity.level;
-        name = entity.name;
-        heroClass = entity.heroClass;
-    }
-}
-
 public class PlayerHandler : Singleton<PlayerHandler>
 {
     public List<FacilityUpgrade> currentUpgrades;
@@ -41,7 +28,7 @@ public class PlayerHandler : Singleton<PlayerHandler>
         currentUpgrades = new List<FacilityUpgrade>();
         playerGold = StartingGold;
         heroPopulation = new List<Hero>();
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 6; i++)
         {
             Hero newHero = new Hero();
             newHero.level = 1;

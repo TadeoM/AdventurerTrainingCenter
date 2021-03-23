@@ -8,7 +8,18 @@ public enum HeroClass
     Warrior,
     Mage
 }
-
+public struct Hero
+{
+    public int level;
+    public string name;
+    public HeroClass heroClass;
+    public Hero(Entity entity)
+    {
+        level = entity.level;
+        name = entity.name;
+        heroClass = entity.heroClass;
+    }
+}
 public class Entity : MonoBehaviour
 {
     public Entity target;
