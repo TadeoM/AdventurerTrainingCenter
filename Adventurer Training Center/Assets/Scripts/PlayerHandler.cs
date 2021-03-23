@@ -10,6 +10,20 @@ public enum PlayerReputation
     Unheard,
 }
 
+public struct Hero
+{
+    public int level;
+    public string name;
+    public HeroClass heroClass;
+
+    public Hero(Entity entity)
+    {
+        level = entity.level;
+        name = entity.name;
+        heroClass = entity.heroClass;
+    }
+}
+
 public class PlayerHandler : Singleton<PlayerHandler>
 {
     public List<FacilityUpgrade> currentUpgrades;
@@ -19,7 +33,12 @@ public class PlayerHandler : Singleton<PlayerHandler>
     public int playerGold;
     public List<Hero> heroPopulation;
 
+    public float strengthMod;
+    public float dexterityMod;
+    public float intelligenceMod;
     public PlayerReputation playerReputation;
+
+    public int playerIncome;
     
     // Start is called before the first frame update
     void Awake()
@@ -78,5 +97,13 @@ public class PlayerHandler : Singleton<PlayerHandler>
         {
             return false;
         }
+    }
+    public void CalculateGoldIncome(int income)
+    {
+        playerIncome += income;
+    }
+    public void TotalDayAssessment()
+    {
+        playerGold += playerIncome;
     }
 }

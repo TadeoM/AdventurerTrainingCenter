@@ -15,8 +15,6 @@ public class ShopUI : MonoBehaviour
     private Transform upgradeContainer;
     private Transform upgradeTemplate;
 
-    [SerializeField]
-    private GameObject playerHandler;
 
     private bool centerUpgradesPanelActive;
     private void Awake()
@@ -55,7 +53,7 @@ public class ShopUI : MonoBehaviour
 
     public void TryBuyUpgrade(FacilityUpgrade upgradeToBuy)
     {
-        if(playerHandler.GetComponent<PlayerHandler>().BuyFacilityRoomCreation(upgradeToBuy))
+        if(PlayerHandler.Instance.BuyFacilityRoomCreation(upgradeToBuy))
         {
             UpgradesAvailable.Remove(upgradeToBuy);
             currentUpgrades.Add(upgradeToBuy);

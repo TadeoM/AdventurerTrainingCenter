@@ -29,9 +29,9 @@ public class Entity : MonoBehaviour
     public HeroClass heroClass;
     public int level;
 
-    [SerializeField] protected int strength;
-    [SerializeField] protected int dexterity;
-    [SerializeField] protected int intelligence;
+    [SerializeField] protected float strength;
+    [SerializeField] protected float dexterity;
+    [SerializeField] protected float intelligence;
 
     [SerializeField] protected int maxHealth;
     [SerializeField] public int currentHealth;
@@ -45,13 +45,13 @@ public class Entity : MonoBehaviour
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected float dodgeChance;
 
-    public void DealDamageToTarget(int damage)
+    public void DealDamageToTarget(float damage)
     {
         target.TakeDamage(damage);
     }
-    public void TakeDamage(int damage)
+    public void TakeDamage(float damage)
     {
-        currentHealth -= (damage - armor);
+        currentHealth -= (int)(damage - armor);
         if(currentHealth <= 0)
         {
             //Destroy(gameObject);
@@ -120,14 +120,28 @@ public class Entity : MonoBehaviour
     {
         return strength;
     }
-    public int Dexterity()
+    public float Dexterity()
     {
         return dexterity;
     }
-    public int Intelligence()
+    public float Intelligence()
     {
         return intelligence;
     }
+
+    public void SetStrength(int val)
+    {
+        strength += val;
+    }
+    public void SetDexterity(int val)
+    {
+        dexterity += val;
+    }
+    public void SetIntelligence(int val)
+    {
+        intelligence += val;
+    }
+
 
     public string GetImagePath()
     {

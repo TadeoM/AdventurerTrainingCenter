@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb076b1767763ea4d9db1aae695cce1e, type: 3}
-  m_Name: ArmoryUpgrade
+  m_Name: SwordUpgradeBlacksmith
   m_EditorClassIdentifier: 
   UpgradeName: 
   UpgradeDescription: 
@@ -19,12 +19,4 @@ MonoBehaviour:
   SpawnRoom: 0
   SpawnLocation: {x: 0, y: 0, z: 0}
   RoomPrefab: {fileID: 0}
-  bonusStrength: 0
-  bonusDexterity: 0
-  bonusIntelligence: 0
-  bonusHealth: 100
-  bonusMana: 0
-  bonusArmor: 5
-  bonusMovemenSpeed: 0
-  bonusAttackSpeed: 0
-  bonusDodgeChance: 0
+  roomType: 0
