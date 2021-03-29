@@ -8,6 +8,12 @@ public enum HeroClass
     Warrior,
     Mage
 }
+public enum AnimationState
+{
+    Idle,
+    Walking,
+    Attack
+}
 public struct Hero
 {
     public int level;
@@ -111,12 +117,12 @@ public class Entity : MonoBehaviour
 
     public void InitStats()
     {
-        currentHealth = maxHealth = (strength * 4);
+        currentHealth = maxHealth = (int)(strength * 10);
         currentMovementSpeed = baseMovemenSpeed = 2;
-        currentMana = maxMana = intelligence;
+        currentMana = maxMana = (int)(intelligence * 10);
     }
 
-    public int Strength()
+    public float Strength()
     {
         return strength;
     }

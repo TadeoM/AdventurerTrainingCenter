@@ -14,7 +14,6 @@ public class DungeonPrepMenu : MonoBehaviour
 
     private void Start()
     {
-        List<TMP_Dropdown.OptionData> dataOptions = new List<TMP_Dropdown.OptionData>();
         for (int i = 0; i < PlayerHandler.Instance.heroPopulation.Count; i++)
         {
             GameObject newListedHero = Instantiate(listedHeroTemplate);
