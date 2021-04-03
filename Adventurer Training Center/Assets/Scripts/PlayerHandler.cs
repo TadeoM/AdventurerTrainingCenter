@@ -32,6 +32,7 @@ public class PlayerHandler : Singleton<PlayerHandler>
     public int StartingGold;
     public int playerGold;
     public List<Hero> heroPopulation;
+    public List<MonsterData> monsterPossession;
 
     public float strengthMod;
     public float dexterityMod;

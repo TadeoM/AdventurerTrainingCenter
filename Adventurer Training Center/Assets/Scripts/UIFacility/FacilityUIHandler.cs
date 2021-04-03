@@ -14,12 +14,12 @@ public class FacilityUIHandler : MonoBehaviour
     public GameObject trainingFieldObject;
     public GameObject armoryObject;
 
-
-    
+    public GameObject monsterShop;
+    bool openMonsterShop;
     // Start is called before the first frame update
     void Start()
     {
-
+        openMonsterShop = false;
     }
 
     // Update is called once per frame
@@ -35,6 +35,12 @@ public class FacilityUIHandler : MonoBehaviour
     public void SpawnRecruit()
     {
         GameController.Instance.RecruitTrainees();
+    }
+    public void OpenMonsterShop()
+    {
+        openMonsterShop = !openMonsterShop;
+
+        monsterShop.SetActive(openMonsterShop); 
     }
    
 }
