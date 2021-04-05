@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4248129299738233062}
   - component: {fileID: 4248129299738233081}
+  - component: {fileID: 3326545284931296728}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -82,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3326545284931296728
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248129299738233063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ddc89f5341791e9478939fd06df1bbf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4248129300515011310
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +165,7 @@ MonoBehaviour:
   currentMovementSpeed: 0
   attackSpeed: 0
   dodgeChance: 0
+  attacking: 0
   heroClass: 1
 --- !u!114 &4248129300515011299
 MonoBehaviour:
@@ -177,6 +198,8 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: 0}
   path: []
   reachedPathTiles: []
+  animator: {fileID: 3326545284931296728}
+  spriteObject: {fileID: 4248129299738233081}
 --- !u!61 &4248129300515011298
 BoxCollider2D:
   m_ObjectHideFlags: 0

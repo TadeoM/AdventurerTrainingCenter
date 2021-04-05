@@ -17,18 +17,17 @@ public class Movement : MonoBehaviour
     private WorldTile prevTile;
 
     // animation data
-    private GameObject spriteObject;
+    [SerializeField] private Animator animator;
+    [SerializeField] private SpriteRenderer spriteObject;
+    private bool facingLeft = true;
     private void Start()
     {
-        spriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
     }
 
     void FixedUpdate()
     {
         GetClosestPlayer();
         Move();
-        AnimateEntity();
-
     }
 
     private void GetClosestPlayer()
@@ -96,7 +95,9 @@ public class Movement : MonoBehaviour
             {
                 Vector2 moveTo = Vector2.MoveTowards(transform.position, reachedPathTiles[reachedPathTiles.Count - 1].transform.position, (entity.currentMovementSpeed) * Time.deltaTime);
                 transform.position = moveTo;
+                entity.AnimationState = AnimationState.Walking;
             }
+            AnimateEntity();
         }
         else
         {
@@ -109,22 +110,28 @@ public class Movement : MonoBehaviour
         {
             Vector2 direction = Vector2.right;
             Vector2 posDiff = (entity.target.transform.position - transform.position).normalized;
-            float val = Vector2.Dot(posDiff, direction);
-            Debug.Log(Mathf.RoundToInt(val));
+            int val = Mathf.RoundToInt(Vector2.Dot(posDiff, direction));
+            facingLeft = val < 0 ? true : false;
         }
         else
         {
             switch (entity.AnimationState)
             {
-                case AnimationState.Idle:
-                    break;
                 case AnimationState.Walking:
+                    Vector2 direction = Vector2.right;
+                    Vector2 posDiff = (reachedPathTiles[reachedPathTiles.Count - 1].transform.position - transform.position).normalized;
+                    int val = Mathf.RoundToInt(Vector2.Dot(posDiff, direction));
+                    if(val != 0)
+                    {
+                        facingLeft = val < 0 ? true : false;
+                    }
                     break;
                 default:
                     break;
             }
         }
-        
-        
+        spriteObject.flipX = facingLeft;
+        //if((int)entity.AnimationState != animator.GetInteger())
+        animator.SetInteger("AnimationState", (int)entity.AnimationState);
     }
 }
