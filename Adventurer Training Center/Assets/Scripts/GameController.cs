@@ -69,9 +69,9 @@ public class GameController : Singleton<GameController>
 
     public void RecruitTrainees()
     {
-        entityToAdd = Instantiate(heroRecruit, spawnPos, Quaternion.identity).GetComponent<Entity>().Init();
+        entityToAdd = Instantiate(heroRecruit, spawnPos, Quaternion.identity).GetComponent<HeroEntity>().Init();
         trainingField.currTraineesInFacility.Add(entityToAdd);
-        heroToAdd = new Hero(entityToAdd);
+        heroToAdd = new Hero((HeroEntity)entityToAdd);
         PlayerHandler.Instance.heroPopulation.Add(heroToAdd);
         //PlayerHandler.Instance.heroPopulation.Add(heroToAdd);
         //Spawn  entity and add to entity list to playerhandler

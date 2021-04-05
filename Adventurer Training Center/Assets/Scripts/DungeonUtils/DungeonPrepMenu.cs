@@ -18,14 +18,14 @@ public class DungeonPrepMenu : MonoBehaviour
         {
             GameObject newListedHero = Instantiate(listedHeroTemplate);
             newListedHero.transform.SetParent(heroListContainer.transform);
-            Entity currentHero = newListedHero.AddComponent<Entity>();
+            HeroEntity currentHero = newListedHero.AddComponent<HeroEntity>();
             currentHero.Init(PlayerHandler.Instance.heroPopulation[i]);
             newListedHero.GetComponent<ListedHero>().Init(currentHero);
             newListedHero.GetComponent<Button>().onClick.AddListener(() => SelectedHero(currentHero));
         }
     }
 
-    public void SelectedHero(Entity currentHero)
+    public void SelectedHero(HeroEntity currentHero)
     {
         for (int i = 0; i < party.Length; i++)
         {
@@ -33,7 +33,7 @@ public class DungeonPrepMenu : MonoBehaviour
             if (heroDisplay.heroImage.sprite == null)
             {
                 heroDisplay.Init(currentHero);
-                Entity heroEntity = heroDisplay.gameObject.AddComponent<Entity>();
+                HeroEntity heroEntity = heroDisplay.gameObject.AddComponent<HeroEntity>();
                 heroEntity.Init(currentHero);
                 Destroy(currentHero.gameObject);
                 break;
@@ -49,10 +49,10 @@ public class DungeonPrepMenu : MonoBehaviour
     {
         mapToLoad = Resources.Load<GameObject>($"Maps/{mapName}");
         GameObject map = Instantiate(mapToLoad);
-        List<Entity> partyEntities = new List<Entity>();
+        List<HeroEntity> partyEntities = new List<HeroEntity>();
         foreach (var hero in party)
         {
-            Entity heroEntity = hero.GetComponent<Entity>();
+            HeroEntity heroEntity = hero.GetComponent<HeroEntity>();
             if (heroEntity != null)
             {
                 partyEntities.Add(heroEntity);

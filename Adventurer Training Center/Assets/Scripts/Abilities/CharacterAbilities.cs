@@ -8,7 +8,7 @@ public class CharacterAbilities : MonoBehaviour
     [SerializeField] private Ability[] abilities; // from highest priority to lowest priority
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
     {
         if(entity.target != null)
         {

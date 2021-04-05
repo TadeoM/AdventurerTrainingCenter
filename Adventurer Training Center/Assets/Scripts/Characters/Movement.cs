@@ -16,10 +16,19 @@ public class Movement : MonoBehaviour
     [SerializeField] List<WorldTile> reachedPathTiles = new List<WorldTile>(); // TODO: Change this to Vector3, entity just needs a location to go to, this way, we can fuck with the location they'll go
     private WorldTile prevTile;
 
-    void Update()
+    // animation data
+    private GameObject spriteObject;
+    private void Start()
+    {
+        spriteObject = GetComponentInChildren<SpriteRenderer>().gameObject;
+    }
+
+    void FixedUpdate()
     {
         GetClosestPlayer();
         Move();
+        AnimateEntity();
+
     }
 
     private void GetClosestPlayer()
@@ -83,7 +92,7 @@ public class Movement : MonoBehaviour
                 reachedPathTiles.RemoveAt(reachedPathTiles.Count - 1);
                 PerformMovement();
             }
-            else
+            else if(entity.Attacking != true)
             {
                 Vector2 moveTo = Vector2.MoveTowards(transform.position, reachedPathTiles[reachedPathTiles.Count - 1].transform.position, (entity.currentMovementSpeed) * Time.deltaTime);
                 transform.position = moveTo;
@@ -93,5 +102,29 @@ public class Movement : MonoBehaviour
         {
             PerformMovement();
         }
+    }
+    private void AnimateEntity()
+    {
+        if (entity.Attacking == true)
+        {
+            Vector2 direction = Vector2.right;
+            Vector2 posDiff = (entity.target.transform.position - transform.position).normalized;
+            float val = Vector2.Dot(posDiff, direction);
+            Debug.Log(Mathf.RoundToInt(val));
+        }
+        else
+        {
+            switch (entity.AnimationState)
+            {
+                case AnimationState.Idle:
+                    break;
+                case AnimationState.Walking:
+                    break;
+                default:
+                    break;
+            }
+        }
+        
+        
     }
 }

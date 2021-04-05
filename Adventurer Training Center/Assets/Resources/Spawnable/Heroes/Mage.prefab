@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4248129299738233062}
   - component: {fileID: 4248129299738233081}
+  - component: {fileID: 1131066527298044629}
   m_Layer: 8
   m_Name: Sprite
   m_TagString: Untagged
@@ -82,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &1131066527298044629
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4248129299738233063}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4248129300515011310
 GameObject:
   m_ObjectHideFlags: 0
@@ -91,7 +111,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4248129300515011296}
-  - component: {fileID: 4248129300515011301}
+  - component: {fileID: -1311758892850239117}
   - component: {fileID: 4248129300515011299}
   - component: {fileID: 4248129300515011298}
   m_Layer: 8
@@ -117,7 +137,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4248129300515011301
+--- !u!114 &-1311758892850239117
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,17 +146,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 4248129300515011310}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0d025a346b8a6a44b977b11325f769a8, type: 3}
+  m_Script: {fileID: 11500000, guid: fdf9b53758da60449806631bb5816336, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   entityName: 
   description: 
-  heroClass: 2
   level: 0
-  strength: 4
-  dexterity: 4
-  intelligence: 2
+  strength: 0
+  dexterity: 0
+  intelligence: 0
   maxHealth: 0
   currentHealth: 0
   maxMana: 0
@@ -146,6 +165,7 @@ MonoBehaviour:
   currentMovementSpeed: 0
   attackSpeed: 0
   dodgeChance: 0
+  heroClass: 2
 --- !u!114 &4248129300515011299
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -158,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ece7a607ac1819b41a13cf86f02fbd29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 4248129300515011301}
+  entity: {fileID: -1311758892850239117}
   viewRange: 100
   chasableTargets:
     useTriggers: 0
@@ -247,7 +267,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd24d8e2e007def4da13efb3f9eb4eae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  entity: {fileID: 4248129300515011301}
+  entity: {fileID: -1311758892850239117}
   abilities:
   - {fileID: 4248129300572407359}
 --- !u!114 &4248129300572407359

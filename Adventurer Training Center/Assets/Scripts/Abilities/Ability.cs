@@ -10,6 +10,7 @@ public abstract class Ability : MonoBehaviour
     [SerializeField] protected float range;
     [SerializeField] protected float castTime;
     [SerializeField] protected float duration;
+    private float timerToIdleAnimation;
     
     protected enum AbilityState {  Idle, Casting, Executing, CooldingDown }
     private AbilityState abilityState;
@@ -29,8 +30,17 @@ public abstract class Ability : MonoBehaviour
         switch (abilityState)
         {
             case AbilityState.Idle:
+                if(timerToIdleAnimation <= 0)
+                {
+                    user.Attacking = false;
+                }
+                else
+                {
+                    timerToIdleAnimation -= Time.deltaTime;
+                }
                 break;
             case AbilityState.Casting:
+                user.Attacking = true;
                 CastAbility();
                 break;
             case AbilityState.Executing:
@@ -38,6 +48,7 @@ public abstract class Ability : MonoBehaviour
                 break;
             case AbilityState.CooldingDown:
                 Cooldown();
+                timerToIdleAnimation = 0.07f;
                 break;
             default:
                 break;

@@ -31,11 +31,10 @@ public class Pathfinding : MonoBehaviour
         }
     }
 
-    public void SpawnHeroes(List<Entity> newHeroes)
+    public void SpawnHeroes(List<HeroEntity> newHeroes)
     {
         for (int i = 0; i < newHeroes.Count; i++) 
         {
-            Debug.Log("here");
             string path = $"Spawnable/Heroes/{newHeroes[i].heroClass}";
             GameObject newHero = Instantiate(Resources.Load<GameObject>(path));
             newHero.GetComponent<Entity>().Init();

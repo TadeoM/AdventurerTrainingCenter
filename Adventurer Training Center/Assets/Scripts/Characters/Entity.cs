@@ -2,37 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum HeroClass
-{
-    Ranger,
-    Warrior,
-    Mage
-}
 public enum AnimationState
 {
     Idle,
-    Walking,
-    Attack
+    Walking
 }
-public struct Hero
-{
-    public int level;
-    public string name;
-    public HeroClass heroClass;
-    public Hero(Entity entity)
-    {
-        level = entity.level;
-        name = entity.name;
-        heroClass = entity.heroClass;
-    }
-}
+
 public class Entity : MonoBehaviour
 {
     public Entity target;
 
     public string entityName;
     public string description;
-    public HeroClass heroClass;
     public int level;
 
     [SerializeField] protected float strength;
@@ -50,6 +31,23 @@ public class Entity : MonoBehaviour
 
     [SerializeField] protected float attackSpeed;
     [SerializeField] protected float dodgeChance;
+
+    protected AnimationState animationState;
+    [SerializeField] private bool attacking;
+
+    public bool Attacking
+    {
+        get { return attacking; }
+        set { attacking = value; }
+    }
+
+
+    public AnimationState AnimationState
+    {
+        get { return animationState; }
+        set { animationState = value; }
+    }
+
 
     public void DealDamageToTarget(float damage)
     {
@@ -69,44 +67,15 @@ public class Entity : MonoBehaviour
         currentMana -= manaUsed;
     }
 
-    public Entity Init()
+    public virtual Entity Init()
     {
-        switch (heroClass)
-        {
-            case HeroClass.Ranger:
-                strength = 1;
-                dexterity = 3;
-                intelligence = 2;
-                break;
-            case HeroClass.Warrior:
-                strength = 3;
-                dexterity = 2;
-                intelligence = 1;
-                break;
-            case HeroClass.Mage:
-                strength = 1;
-                dexterity = 2;
-                intelligence = 3;
-                break;
-            default:
-                break;
-        }
-
         InitStats();
         return this;
     }
 
-    public Entity Init(Hero hero)
-    {
-        level = hero.level;
-        heroClass = hero.heroClass;
-        entityName = hero.name;
-        return Init();
-    }
-    public Entity Init(Entity entity)
+    public virtual Entity Init(Entity entity)
     {
         level = entity.level;
-        heroClass = entity.heroClass;
         entityName = entity.name;
         strength = entity.strength;
         dexterity = entity.dexterity;
@@ -115,7 +84,7 @@ public class Entity : MonoBehaviour
         return this;
     }
 
-    public void InitStats()
+    public virtual void InitStats()
     {
         currentHealth = maxHealth = (int)(strength * 10);
         currentMovementSpeed = baseMovemenSpeed = 2;
@@ -149,18 +118,8 @@ public class Entity : MonoBehaviour
     }
 
 
-    public string GetImagePath()
+    public virtual string GetImagePath()
     {
-        switch (heroClass)
-        {
-            case HeroClass.Ranger:
-                return "FlowerElf";
-            case HeroClass.Warrior:
-                return "OrangeKnight";
-            case HeroClass.Mage:
-                return "Wizard";
-            default:
-                return "";
-        }
+        return "";
     }
 }
