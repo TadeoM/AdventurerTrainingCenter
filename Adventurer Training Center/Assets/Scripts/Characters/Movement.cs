@@ -106,6 +106,8 @@ public class Movement : MonoBehaviour
     }
     private void AnimateEntity()
     {
+        if(reachedPathTiles.Count < 1) { return; }
+
         if (entity.Attacking == true)
         {
             Vector2 direction = Vector2.right;

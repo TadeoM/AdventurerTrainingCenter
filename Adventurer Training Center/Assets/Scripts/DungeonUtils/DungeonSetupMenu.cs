@@ -31,6 +31,7 @@ public class DungeonSetupMenu : MonoBehaviour
             var objectToSpawn = Resources.Load($"Spawnable/{spawnType}/{optionSelected}");
             var spawnedObject = Instantiate(objectToSpawn, dungeonSpawn.GetSpawnLocation(), Quaternion.identity);
         }
+        Camera.main.GetComponent<CameraController>().enabled = true;
         pathfindingThing.SetSpawnedEnemyParents();
         Destroy(gameObject);
     }
